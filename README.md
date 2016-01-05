@@ -1,5 +1,5 @@
 # caddy-utils
-My utils for caddy server
+My utils for [caddy server](https://caddyserver.com)
 
 
 ## [Template for browse directives](https://github.com/sinky/caddy-utils/tree/master/browse_tpl)
