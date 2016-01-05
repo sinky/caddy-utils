@@ -182,13 +182,19 @@
       </table>
     </main>
     <script>
+    // Make table row clickable
     var rows = document.getElementsByTagName('tr');
-    var max = rows.length;
-    var index;
 
-    for(index = 1; index < max; index++) {
-      rows[index].onclick = function(event) {
-        location.href = this.getElementsByTagName('a')[0].getAttribute('href');
+    for (var i = rows.length - 1; i >= 0; i -= 1) { // fast for-loop (decrement instead increment) http://stackoverflow.com/q/3520688/1461859
+      rows[i].onclick = function(event) {
+        if(event.which == 1) { // left: change location
+          event.preventDefault();
+          location.href = this.getElementsByTagName('a')[0].getAttribute('href');
+        }
+        if(event.which == 2) { // middle: open new tab
+          event.preventDefault();
+          window.open(this.getElementsByTagName('a')[0].getAttribute('href'));
+        }        
       }
     }
     </script>
