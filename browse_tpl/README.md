@@ -1,4 +1,3 @@
-Template for browse derictive
-============================
+# Template for browse derictive
 
-http://sinky.github.io/caddy-utils/browse_tpl/
+Static Demo: http://sinky.github.io/caddy-utils/browse_tpl/
