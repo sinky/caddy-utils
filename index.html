@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>/</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      color: #111;
+      font-size: 1em;
+      font-family: sans-serif;
+    }
+
+    body {
+      padding: 5px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #111;
+    }
+
+    a:hover {
+      color: #333;
+    }
+
+    header h1 {
+      word-break: break-word;
+    }
+
+    main {
+      margin: 0 auto;
+      padding-top: 20px;
+      max-width: 920px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    tr {
+      outline: 0;
+      border: 0;
+    }
+
+    tr:hover td {
+      background: #f6f6f6;
+    }
+
+    th {
+      text-align: left;
+      padding-right: 20px;
+      padding-bottom: .5em;
+    }
+
+    .col-icon {
+      width: 1em;
+    }
+
+    tr td:nth-child(2) {
+     padding-right: 2px;
+    }
+
+    tr th:nth-child(4),
+    tr td:nth-child(4) {
+     display: none;
+    }
+
+    tr td:first-of-type {
+      padding-right: 10px;
+    }
+
+    td {
+      cursor: pointer;
+      padding: 10px 0;
+      outline: 0;
+      border: 0;
+      border-bottom: 1px solid #edf1f5;
+      vertical-align: middle;
+      text-align: left;
+      transition:background 300ms ease;
+    }
+
+
+    /* --- >= smartphones landscape --- */
+    @media screen and (min-width: 480px) {
+      tr th:nth-child(4),
+      tr td:nth-child(4) {
+        display: table-cell;
+      }
+    }
+
+    /* --- >= tablets portrait --- */
+    @media screen and (min-width: 768px) {
+    }
+
+    /* --- >= tablets landscape --- */
+    @media screen and (min-width: 1024px) {
+    }
+
+    /* --- >= desktop --- */
+    @media screen and (min-width: 1180px) {
+      td {
+        padding: 4px 0;
+      }
+    }
+
+    /* --- >= desktop big --- */
+    @media screen and (min-width: 1300px) {
+    }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>/</h1>
+    </header>
+    <main>
+      <table>
+        <tr>
+          <th class="col-icon"></th>
+          <th class="col-name">
+            
+            <a href="?sort=name&order=asc">Name</a>
+            
+          </th>
+          <th class="col-size">
+            
+            <a href="?sort=size&order=asc">Size</a>
+            
+          </th>
+          <th class="col-time">
+            
+            <a href="?sort=time&order=asc">Modified &#9660;</a>
+            
+          </th>
+        </tr>
+      
+        
+        <tr>
+          <td>
+            <svg height="16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M13 4H7v-1c0-0.66-0.31-1-1-1H1c-0.55 0-1 0.45-1 1v10c0 0.55 0.45 1 1 1h12c0.55 0 1-0.45 1-1V5c0-0.55-0.45-1-1-1z m-7 0H1v-1h5v1z" /></svg>
+            
+          </td>
+          <td>
+            <a href="Folder/" class="name">Folder</a>
+          </td>
+          <td></td>
+          <td>05.01.2016 09:40:11</td>
+        </tr>
+        
+        <tr>
+          <td>
+            <svg height="16" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M6 5H2v-1h4v1zM2 8h7v-1H2v1z m0 2h7v-1H2v1z m0 2h7v-1H2v1z m10-7.5v9.5c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V2c0-0.55 0.45-1 1-1h7.5l3.5 3.5z m-1 0.5L8 2H1v12h10V5z" /></svg>
+          </td>
+          <td>
+            <a href="File.txt" class="name">File.txt</a>
+          </td>
+          <td>0 B</td>
+          <td>05.01.2016 09:39:58</td>
+        </tr>
+        
+      </table>
+    </main>
+    <script>
+    var rows = document.getElementsByTagName('tr');
+    var max = rows.length;
+    var index;
+
+    for(index = 1; index < max; index++) {
+      rows[index].onclick = function(event) {
+        location.href = this.getElementsByTagName('a')[0].getAttribute('href');
+      }
+    }
+    </script>
+  </body>
+</html>
