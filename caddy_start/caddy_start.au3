@@ -117,6 +117,8 @@ WEnd
 Func StartBrowser()
    $caddyPort = EnvGet("CADDY_PORT")
    $caddyHostStart = @IPAddress1
+   $caddyHostStart = @ComputerName & ".Local"
+
    logger('StartBrowser: http://' & $caddyHostStart & ':' & $caddyPort & '/')
    ShellExecute('http://' & $caddyHostStart & ':' & $caddyPort & '/')
 EndFunc
