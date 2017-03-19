@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{.Name}}</title>
+    <title>{{.Name}} - caddy</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -92,6 +92,10 @@
       text-align: left;
       transition:background 300ms ease;
     }
+    
+    #filter {
+      padding: 4px;
+    }
 
 
     /* Mobile first */
@@ -130,6 +134,7 @@
   <body>
     <header>
       <h1>{{range $url, $name := .BreadcrumbMap}}<a href="{{$url}}">{{$name}}</a>{{if ne $url "/"}}/{{end}}{{end}}</h1>
+      <input type="text" id="filter" placeholder="Filter" />
     </header>
     <main>
       <table>
@@ -176,7 +181,7 @@
         </tr>
       {{end}}
         {{range .Items}}
-        <tr>
+        <tr class="file">
           <td>
             {{if .IsDir}}<svg height="16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M13 4H7v-1c0-0.66-0.31-1-1-1H1c-0.55 0-1 0.45-1 1v10c0 0.55 0.45 1 1 1h12c0.55 0 1-0.45 1-1V5c0-0.55-0.45-1-1-1z m-7 0H1v-1h5v1z" /></svg>
             {{else}}<svg height="16" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M6 5H2v-1h4v1zM2 8h7v-1H2v1z m0 2h7v-1H2v1z m0 2h7v-1H2v1z m10-7.5v9.5c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V2c0-0.55 0.45-1 1-1h7.5l3.5 3.5z m-1 0.5L8 2H1v12h10V5z" /></svg>{{end}}
@@ -190,8 +195,8 @@
         {{end}}
       </table>
     </main>
-    <script>
 
+    <script>
     var rows = document.getElementsByTagName('tr');
     var max = rows.length;
     var index;
@@ -205,6 +210,26 @@
           window.open(this.getElementsByTagName('a')[0].getAttribute('href'));
         }
       }
+    }
+
+    var filterEl = document.getElementById('filter');
+    filterEl.addEventListener("keyup", filter);
+    function filter() {
+      var q = filterEl.value.trim().toLowerCase();
+      var elems = document.querySelectorAll('tr.file');
+      elems.forEach(function(el) {
+        if (!q) {
+          el.style.display = '';
+          return;
+        }
+        var nameEl = el.querySelector('.name');
+        var nameVal = nameEl.textContent.trim().toLowerCase();
+        if (nameVal.indexOf(q) !== -1) {
+          el.style.display = '';
+        } else {
+          el.style.display = 'none';
+        }
+      });
     }
     </script>
   </body>
